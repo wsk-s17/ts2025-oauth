@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Register</title>
+
+		<link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
+	</head>
+	<body>
+		<div class="container-sm vh-100 d-flex justify-content-center align-items-center">
+			<div class="border rounded p-4">
+				<h2 class="fs-2">Register</h2>
+
+				<hr />
+
+				<form action="/auth/register" method="post">
+					<div class='d-flex gap-2 mb-3'>
+						<div class="">
+							<label for="nameInput" class="form-label">Name</label>
+							<input
+								type="text"
+								name='name'
+								class="form-control"
+								id="nameInput"
+								placeholder="Name"
+							/>
+						</div>
+
+						<div class="">
+							<label for="phoneNumberInput" class="form-label">Phone Number</label>
+							<input
+								type="tel"
+								name='phone'
+								class="form-control"
+								id="phoneNumberInput"
+								placeholder="Phone Number"
+							/>
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<label for="emailInput" class="form-label">Email</label>
+						<input
+							type="email"
+							name='email'
+							class="form-control"
+							id="emailInput"
+							placeholder="Email"
+						/>
+					</div>
+
+					<div class="mb-3">
+						<label for="passwordInput" class="form-label">Password</label>
+						<input
+							type="password"
+							name='password'
+							class="form-control"
+							id="passwordInput"
+							placeholder="********"
+						/>
+					</div>
+
+					<% if (defaultErrorMessage) { %>
+						<div class="alert alert-danger" role="alert">
+							<%= defaultErrorMessage -%>
+						</div>
+					<% } %>
+
+					<button type="submit" class="btn btn-dark w-100">Submit</button>
+				</form>
+			</div>
+		</div>
+
+		<script
+			src="/bootstrap/js/bootstrap.min.js"
+		></script>
+	</body>
+</html>

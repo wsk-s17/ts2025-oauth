@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create App</title>
+
+		<link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
+	</head>
+	<body>
+		<%- include('../../layouts/header.ejs') -%>
+
+		<div class="container-sm">
+			<div class="border rounded p-4">
+				<div class='d-flex justify-content-between align-items-center mb-4'>
+					<h2 class="fs-2">Create App</h2>
+
+					<a class='btn btn-outline-dark' href='/'>
+						Back
+					</a>
+				</div>
+
+				<hr />
+
+				<% if (defaultErrorMessage) { %>
+					<div class="alert alert-danger" role="alert">
+						<%= defaultErrorMessage -%>
+					</div>
+				<% } %>
+
+				<form action='/apps/create' method='post'>
+					<div class="mb-3">
+						<label for="nameInput" class="form-label">App Name</label>
+						<input
+							type="text"
+							name='name'
+							class="form-control <%= violationError?.['name'] && 'is-invalid' -%>"
+							id="nameInput"
+							placeholder="Name"
+						/>
+						<div class='invalid-feedback'>
+							<%= violationError?.['name'] -%>
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<label for="redirectUriInput" class="form-label">Redirect URIs (split by comma)</label>
+						<input
+							type="text"
+							name='redirectUri'
+							class="form-control <%= violationError?.['redirectUri'] && 'is-invalid' -%>"
+							id="redirectUriInput"
+							placeholder="Redirect URIs"
+						/>
+						<div class='invalid-feedback'>
+							<%= violationError?.['redirectUris'] -%>
+						</div>
+					</div>
+
+					<button class='btn btn-outline-success w-100' type='submit'>
+						Create
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<script
+			src="/bootstrap/js/bootstrap.min.js"
+		></script>
+	</body>
+</html>
